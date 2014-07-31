@@ -35,7 +35,6 @@ class RubricTest extends \PHPUnit_Framework_TestCase
         foreach ($rubrics as $rubric) {
             $this->assertTrue($rubric instanceof \consultnn\api\mappers\Rubric, 'Each value must be instance of Rubric');
         }
-        var_dump($rubric);
     }
 
 }

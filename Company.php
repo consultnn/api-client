@@ -1,19 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sokrat
- * Date: 30.07.14
- * Time: 11:15
- */
 
 namespace consultnn\api;
 
-class Company
+class Company extends AbstractDomain
 {
 
-    public function companySearch()
+    public function byRubricIds(array $ids)
     {
-
+        return $this->getInternalList(
+          'company/search',
+           'Company',
+            [
+                'params' => [
+                    'rubrics' => $ids
+                ]
+            ]
+        );
     }
 
 }
