@@ -7,14 +7,17 @@ namespace consultnn\api\mappers;
  * @package consultnn\api\mappers
  * @property int $id
  * @property string $name
- * @property string $type
- * @property string $alias
+ * @property int level
  * @property int $parentId
- * @property int $orgCount
- * @property int $branchCount
- * @property string $kind
  */
 class Rubric extends AbstractMapper
 {
+    public $id;
+    public $name;
+    public $level;
 
+    public function setRubricId($value)
+    {
+        $this->id = $value;
+    }
 }

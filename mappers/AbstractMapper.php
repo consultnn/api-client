@@ -63,7 +63,7 @@ abstract class AbstractMapper implements MapperInterface, \Serializable
             $methodName = 'set' . ucfirst($propertyName);
             if (method_exists($this, $methodName)) {
                 $this->$methodName($value);
-            } else {
+            } elseif (property_exists($this, $propertyName)) {
                 $this->$propertyName = $value;
             }
         }

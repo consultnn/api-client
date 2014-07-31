@@ -18,7 +18,7 @@ class Rubric extends AbstractDomain
             'company/rubricDict',
             'Rubric',
             [
-                'pageSize' => 10000
+                'pageSize' => 10000,
             ]
         );
     }
