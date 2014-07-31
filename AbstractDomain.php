@@ -1,0 +1,70 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: sokrat
+ * Date: 31.07.14
+ * Time: 18:50
+ */
+
+namespace consultnn\api;
+
+use consultnn\api\mappers\MapperFactory;
+
+class AbstractDomain
+{
+
+    public $client;
+
+    /**
+     * @param ApiConnection $client
+     * @param MapperFactory $mapper
+     */
+    public function __construct(ApiConnection $client = null, MapperFactory $mapper = null)
+    {
+        $this->client = $client ? $client : new ApiConnection();
+        $this->factory = $mapper ? $mapper : new MapperFactory();
+    }
+
+
+    /**
+     * @param $service
+     * @param $mapper
+     * @param array $params
+     * @param string $typeItems
+     * @return mixed
+     * @throws Exception
+     */
+    protected function getInternalList($service, $mapper, array $params = array(), $typeItems = null)
+    {
+        $response = $this->client->send($service, $params);
+
+        if (is_string($response)) {
+            throw new Exception("Can't get items for string response");
+        }
+        return $this->getItemsOfResponse($response, $mapper, $typeItems);
+    }
+
+    /**
+     * @param $response
+     * @param $mapper
+     * @param $items
+     * @return array
+     */
+    protected function getItemsOfResponse($response, $mapper, $items)
+    {
+        if ($items) {
+            if (empty($response[$items]))
+                return array();
+            else
+                $response = $response[$items];
+        }
+
+        $result = array();
+        foreach ($response as $value) {
+            $result[] = $this->factory->map($value, $mapper);
+        }
+        return $result;
+    }
+
+
+}

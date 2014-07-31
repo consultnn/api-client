@@ -1,6 +1,6 @@
 {
 	"name": "consultnn/api-client",
-	"description": "ConsultNN api client library",
+	"description": "ICC api client library",
 	"keywords": ["ConsultNN", "API"],
 	"license": "MIT",
 	"authors": [
@@ -24,6 +24,11 @@
 		"phpunit/phpunit": "4.1.*",
 		"squizlabs/php_codesniffer": "1.*"
 	},
+    "autoload": {
+        "psr-4": {
+            "consultnn\\api\\": "."
+        }
+    },
 	"support": {
 		"email": "tech@consultnn.ru"
 	}

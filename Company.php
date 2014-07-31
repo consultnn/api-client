@@ -8,8 +8,12 @@
 
 namespace consultnn\api;
 
-class Company {
+class Company
+{
 
+    public function companySearch()
+    {
 
+    }
 
-} 
+}
