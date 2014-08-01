@@ -26,13 +26,13 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
 
     public function testByRubrics()
     {
-        $companies = $this->company->byRubricIds([348, 355]);
-
+        $rubrics = [348, 355];
+        $companies = $this->company->byRubricIds($rubrics);
         $this->assertTrue(is_array($companies));
 
         foreach ($companies as $company) {
             $this->assertTrue($company instanceof \consultnn\api\mappers\Company);
+            $this->assertNotEmpty(array_intersect($rubrics, $company->rubrics));
         }
-        var_dump($company);
     }
 }

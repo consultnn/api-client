@@ -8,7 +8,7 @@
 
 namespace consultnn\api\exceptions;
 
+class Exception extends \Exception
+{
 
-class Exception extends \Exception {
-
-} 
+}

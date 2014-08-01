@@ -53,10 +53,11 @@ class AbstractDomain
     protected function getItemsOfResponse($response, $mapper, $items)
     {
         if ($items) {
-            if (empty($response[$items]))
+            if (empty($response[$items])) {
                 return array();
-            else
+            } else {
                 $response = $response[$items];
+            }
         }
 
         $result = array();
@@ -65,6 +66,4 @@ class AbstractDomain
         }
         return $result;
     }
-
-
 }

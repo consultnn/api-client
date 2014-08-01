@@ -4,12 +4,11 @@ namespace consultnn\api;
 
 class Company extends AbstractDomain
 {
-
     public function byRubricIds(array $ids)
     {
         return $this->getInternalList(
-          'company/search',
-           'Company',
+            'company/search',
+            'Company',
             [
                 'params' => [
                     'rubrics' => $ids
@@ -17,5 +16,4 @@ class Company extends AbstractDomain
             ]
         );
     }
-
 }
