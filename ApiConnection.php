@@ -109,9 +109,11 @@ class ApiConnection
             return $data;
         }
 
-        if (!$response || isset($response['code']) || !isset($response['result'])) {
+        if (!$response || isset($response['code'])) {
             return $this->raiseException("Invalid response message");
         }
+        if ($response['total'] == 0)
+            return [];
         $this->lastError = null;
         return $response['result'];
     }
