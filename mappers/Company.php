@@ -18,11 +18,12 @@ class Company extends AbstractMapper
     public $email;
     public $url;
     public $busyHours;
-    public $isHeadOffice;
-    public $address;
+    public $contacts;
+
+    /**
+     * @var Branch
+     */
     public $branch;
-
-
 
     public function setRubric($value)
     {
@@ -82,6 +83,9 @@ class Company extends AbstractMapper
         }
     }
 
+    /**
+     * @return Branch
+     */
     private function getBranch()
     {
         if (empty($this->branch)) {

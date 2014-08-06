@@ -4,7 +4,15 @@ namespace consultnn\api;
 
 class Company extends AbstractDomain
 {
-    public function byRubricIds(array $ids, $page=1, $pageSize=100)
+
+    /**
+     * @param array $ids
+     * @param array $filters
+     * @param int $page
+     * @param int $pageSize
+     * @return \consultnn\api\mappers\Company[]
+     */
+    public function byRubricIds(array $ids, array $filters = [],  $page=1, $pageSize=100)
     {
         return $this->getInternalList(
             'company/search',
@@ -12,7 +20,24 @@ class Company extends AbstractDomain
             [
                 'rubrics' => implode(',', $ids),
                 'page' => $page,
-                'pageSize' => $pageSize
+                'pageSize' => $pageSize,
+                'params' => $filters
+            ]
+        );
+    }
+
+    public function getBranches($id, $page=1, $pageSize=100)
+    {
+        return $this->getInternalList(
+            'company/search',
+            'Company',
+            [
+                'page' => $page,
+                'pageSize' => $pageSize,
+                'params' => [
+                    'head_office_id' => $id,
+                    'is_head_office' => false
+                ]
             ]
         );
     }

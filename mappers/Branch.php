@@ -11,7 +11,6 @@ namespace consultnn\api\mappers;
 
 class Branch extends AbstractMapper
 {
-    public $id;
     public $name;
     public $headOfficeId;
 }
