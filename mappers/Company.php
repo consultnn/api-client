@@ -18,7 +18,8 @@ class Company extends AbstractMapper
     public $email;
     public $url;
     public $busyHours;
-    public $contacts;
+    public $address;
+    public $sphere;
 
     /**
      * @var Branch
