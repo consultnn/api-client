@@ -55,8 +55,9 @@ class Company extends AbstractMapper
     public function setBusyhours($value)
     {
         $this->busyHours = $value;
-        $this->schedule = new Schedule();
-        $this->schedule->setBusyHours($value);
+        $schedule = new Schedule();
+        $schedule->setBusyHours($value);
+        $this->schedule = $schedule->schedule;
     }
 
     public function setPhonenumbers($value)
