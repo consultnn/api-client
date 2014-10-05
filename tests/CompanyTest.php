@@ -58,4 +58,5 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($company->id, $branch->branch->headOfficeId);
         }
     }
+
 }

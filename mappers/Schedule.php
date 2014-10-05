@@ -112,6 +112,7 @@ class Schedule extends AbstractMapper
         }
 
         $start = false;
+
         foreach ($daysTransform as $dayName => $dayValue) {
             if ($dayFrom == $dayName || $start) {
                 if ($scheduleDay !== null) {
@@ -119,11 +120,10 @@ class Schedule extends AbstractMapper
                 } else {
                     $this->_lazyDays[$dayName] = $scheduleDay;
                 }
-
                 $start = true;
             }
 
-            if ($dayTo = $dayName) {
+            if ($dayTo == $dayName) {
                 break;
             }
         }
