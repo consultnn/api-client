@@ -47,6 +47,11 @@ class Company extends AbstractMapper
         $this->getAddress()->id = $value;
     }
 
+    public function setSublocality($value)
+    {
+        $this->getAddress()->sub_locality_id = $value;
+    }
+
     public function setAddressName($value)
     {
         $this->getAddress()->name = $value;
