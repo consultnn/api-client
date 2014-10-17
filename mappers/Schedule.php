@@ -40,6 +40,12 @@ class Schedule extends AbstractMapper
                     $this->parseLunch($time);
                 }
             }
+
+            foreach ($this->schedule as $day => &$workingTime) {
+                if (count($workingTime) == 1) {
+                    $workingTime = [$workingTime];
+                }
+            }
         } catch (\Exception $e) {
             $this->schedule = 'error parsing';
         }
