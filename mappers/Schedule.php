@@ -42,7 +42,7 @@ class Schedule extends AbstractMapper
             }
 
             foreach ($this->schedule as $day => &$workingTime) {
-                if (count($workingTime) == 1) {
+                if (isset($workingTime['from'])) {
                     $workingTime = [$workingTime];
                 }
             }
