@@ -71,13 +71,6 @@ class Company extends AbstractMapper
         }
     }
 
-    public function setVillage($value)
-    {
-        if (!empty($value)) {
-            $this->getAddress()->name = $value.', '.$this->getAddress()->name;
-        }
-    }
-
     public function setBusyhours($value)
     {
         $this->busyHours = $value;
