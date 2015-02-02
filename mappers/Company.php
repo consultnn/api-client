@@ -64,6 +64,20 @@ class Company extends AbstractMapper
         }
     }
 
+    public function setAltHouse($value)
+    {
+        if (!empty($value)) {
+            $this->getAddress()->name = $this->getAddress()->name.'/'.$value;
+        }
+    }
+
+    public function setVillage($value)
+    {
+        if (!empty($value)) {
+            $this->getAddress()->name = $value.', '.$this->getAddress()->name;
+        }
+    }
+
     public function setBusyhours($value)
     {
         $this->busyHours = $value;
