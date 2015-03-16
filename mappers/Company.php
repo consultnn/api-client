@@ -21,6 +21,7 @@ class Company extends AbstractMapper
     public $schedule;
     public $address;
     public $sphere;
+    public $companyType;
 
     /**
      * @var Branch
