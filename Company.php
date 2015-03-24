@@ -41,4 +41,20 @@ class Company extends AbstractDomain
             ]
         );
     }
+    
+    public function getById($id)
+    {
+        $result =  $this->getInternalList(
+            'company/id',
+            'Company',
+            [
+                'id' => $id,
+            ]
+        );
+        if (key_exists(0, $result)) {
+            return $result[0];
+        }
+        
+        return null;
+    }
 }
