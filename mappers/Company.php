@@ -21,11 +21,16 @@ class Company extends AbstractMapper
     public $schedule;
     public $address;
     public $sphere;
+    public $type;
 
     /**
      * @var Branch
      */
     public $branch;
+
+    public function setCompanyType($value) {
+        $this->type = $value;
+    }
 
     public function setRubric($value)
     {
