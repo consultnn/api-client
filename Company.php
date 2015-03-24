@@ -51,10 +51,6 @@ class Company extends AbstractDomain
                 'id' => $id,
             ]
         );
-        if (key_exists(0, $result)) {
-            return $result[0];
-        }
-        
-        return null;
+        return current($result);
     }
 }
