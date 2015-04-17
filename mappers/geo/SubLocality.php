@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sokrat
- * Date: 16.10.14
- * Time: 19:01
- */
 
 namespace consultnn\api\mappers;
 
@@ -13,7 +7,7 @@ namespace consultnn\api\mappers;
  * Class SubLocality
  * @package consultnn\api\mappers
  */
-class SubLocality extends AbstractMapper
+class SubLocality extends Geo
 {
     public $id;
     public $name;
@@ -22,7 +16,7 @@ class SubLocality extends AbstractMapper
     public $type;
     public $locality_id;
 
-    public function setSub_locality_id($value)
+    public function setSubLocalityId($value)
     {
         $this->id = $value;
     }

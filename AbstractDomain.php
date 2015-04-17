@@ -8,6 +8,7 @@
 
 namespace consultnn\api;
 
+use consultnn\api\exceptions\Exception;
 use consultnn\api\mappers\MapperFactory;
 
 class AbstractDomain
@@ -25,13 +26,28 @@ class AbstractDomain
         $this->factory = $mapper ? $mapper : new MapperFactory();
     }
 
+    /**
+     * @param string $service
+     * @param array $params
+     * @param string $mapper
+     * @return mixed|mappers\MapperInterface
+     */
+    protected function getSingle($service, $mapper, array $params = array())
+    {
+        $response = $this->client->send($service, $params);
+        if (isset($response[0])) {
+            return $this->factory->map($response[0], $mapper);
+        }
+        return false;
+    }
+
 
     /**
      * @param $service
      * @param $mapper
      * @param array $params
      * @param string $typeItems
-     * @return mixed
+     * @return mappers\MapperInterface[]
      * @throws Exception
      */
     protected function getInternalList($service, $mapper, array $params = array(), $typeItems = null)
