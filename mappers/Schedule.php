@@ -124,7 +124,7 @@ class Schedule extends AbstractMapper
                 if ($scheduleDay !== null) {
                     $this->schedule[$dayValue] = $scheduleDay;
                 } else {
-                    $this->_lazyDays[$dayName] = $scheduleDay;
+                    $this->_lazyDays[$dayValue] = $scheduleDay;
                 }
                 $start = true;
             }
