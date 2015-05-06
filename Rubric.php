@@ -15,10 +15,10 @@ class Rubric extends AbstractDomain
     public function all()
     {
         return $this->getInternalList(
-            'company/rubricDict',
+            'rubrics',
             'Rubric',
             [
-                'pageSize' => 10000,
+                'per-page' => 10000,
             ]
         );
     }

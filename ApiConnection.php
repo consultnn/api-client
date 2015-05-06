@@ -15,10 +15,10 @@ class ApiConnection
     private $logger;
 
     /* @var string $url url to API */
-    public $url = 'http://api.consultnn.ru';
+    public $url = 'http://api.directory.sokrat';
 
     /* @var string $version api version */
-    public $version = '1.0';
+    public $version = 'v1';
 
     /* @var string $format */
     protected $format = 'json';
@@ -109,11 +109,14 @@ class ApiConnection
             return $data;
         }
 
-        if (!$response || isset($response['code'])) {
+        if (isset($response['_meta']['error'])) {
+            return $this->metaException($response['meta']);
+        }
+
+        if (!$response || !isset($response['_meta'], $response['result'])) {
             return $this->raiseException("Invalid response message");
         }
-        if ($response['total'] == 0)
-            return [];
+
         $this->lastError = null;
         return $response['result'];
     }

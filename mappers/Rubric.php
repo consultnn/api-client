@@ -14,6 +14,7 @@ class Rubric extends AbstractMapper
 {
     public $id;
     public $name;
+    public $oldId;
     public $level;
 
     public function setRubricId($value)
