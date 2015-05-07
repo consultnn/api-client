@@ -33,8 +33,6 @@ class RubricTest extends \PHPUnit_Framework_TestCase
         $this->assertNotEmpty($rubrics, 'Rubrics not empty');
 
         foreach ($rubrics as $rubric) {
-            var_dump($rubric);
-            exit;
             $this->assertTrue(
                 $rubric instanceof \consultnn\api\mappers\Rubric,
                 'Each value must be instance of Rubric'

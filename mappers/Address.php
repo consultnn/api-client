@@ -15,5 +15,5 @@ class Address extends AbstractMapper
     public $lon;
     public $lat;
     public $name;
-    public $sub_locality_id;
+    public $subLocality;
 }
