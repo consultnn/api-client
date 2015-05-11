@@ -2,19 +2,27 @@
 
 namespace consultnn\api;
 
+/**
+ * Class Company
+ * supported expand: phones, internet, schedule, sphere, type
+ * @package consultnn\api
+ */
 class Company extends AbstractDomain
 {
 
     /**
+     * supported filters:
+     *  rubrics - list of rubric IDs
      * @param string $what
      * @param string $where
      * @param array $filters
+     * @param array $expand List of expand parameters
      * @param int $page
      * @param int $perPage
      * @return \consultnn\api\mappers\Company[]
      *
      */
-    public function search($what = null, $where = null, $filters = [], $page=1, $perPage = 100)
+    public function search($what = null, $where = null, $filters = [], $expand = [], $page=1, $perPage = 100)
     {
         return $this->getInternalList(
             'company/search',
@@ -23,6 +31,7 @@ class Company extends AbstractDomain
                 'what' => $what,
                 'where' => $where,
                 'filters' => $filters,
+                'expand' => self::toString($expand),
                 'page' => $page,
                 'per-page' => $perPage
             ]
@@ -31,13 +40,17 @@ class Company extends AbstractDomain
 
     /**
      * @param $id
+     * @param array $expand List of expand parameters
      * @return mappers\MapperInterface|mixed
      */
-    public function getById($id)
+    public function getById($id, $expand = [])
     {
         $result =  $this->getSingle(
             'company/'.$id,
-            'Company'
+            'Company',
+            [
+                'expand' => self::toString($expand)
+            ]
         );
         return $result;
     }

@@ -82,4 +82,13 @@ class AbstractDomain
         }
         return $result;
     }
+
+    /**
+     * @param array $values
+     * @return null|string
+     */
+    public static function toString(array $values)
+    {
+        return empty($values) ? null : implode(',', $values);
+    }
 }

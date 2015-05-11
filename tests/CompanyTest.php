@@ -58,4 +58,15 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
         $this->company->getById('aaaaaaaaaaaaaaaaaaaaaaaa');
     }
 
+    /**
+     * @depends testById
+     */
+    public function testExpand()
+    {
+        $NeededCompany = current($this->company->search());
+        $emptyCompany = $this->company->getById($NeededCompany->id);
+        $fullCompany = $this->company->getById($NeededCompany->id, ['phones', 'internet', 'schedule', 'sphere', 'type']);
+        $this->assertNotEquals($emptyCompany, $fullCompany);
+    }
+
 }
