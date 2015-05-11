@@ -19,16 +19,11 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
      */
     public $company;
 
-    /**
-     * @var Rubric
-     */
-    public $rubric;
 
     public function setUp()
     {
         parent::setUp();
         $this->company = new Company();
-        $this->rubric = new Rubric();
     }
 
     public function testByRubrics()
@@ -39,6 +34,28 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
         foreach ($companies as $company) {
             $this->assertTrue($company instanceof \consultnn\api\mappers\Company);
         }
+    }
+
+    /**
+     * @depends testByRubrics
+     */
+    public function testById()
+    {
+        $NeededCompany = current($this->company->search());
+        $company = $this->company->getById($NeededCompany->id);
+
+        $this->assertTrue($company instanceof \consultnn\api\mappers\Company);
+        $this->assertEquals($company, $NeededCompany);
+    }
+
+
+    /**
+     * @expectedException \consultnn\api\exceptions\ConnectionException
+     * @expectedExceptionCode 404
+     */
+    public function testFakeId()
+    {
+        $this->company->getById('aaaaaaaaaaaaaaaaaaaaaaaa');
     }
 
 }

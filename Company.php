@@ -6,35 +6,39 @@ class Company extends AbstractDomain
 {
 
     /**
+     * @param string $what
+     * @param string $where
      * @param array $filters
      * @param int $page
-     * @param int $pageSize
+     * @param int $perPage
      * @return \consultnn\api\mappers\Company[]
+     *
      */
-    public function search($filters = [], $page=1, $pageSize=100)
+    public function search($what = null, $where = null, $filters = [], $page=1, $perPage = 100)
     {
         return $this->getInternalList(
             'company/search',
             'Company',
-            array_merge(
-                $filters,
-                [
-                    'page' => $page,
-                    'per-page' => $pageSize
-                ]
-            )
+            [
+                'what' => $what,
+                'where' => $where,
+                'filters' => $filters,
+                'page' => $page,
+                'per-page' => $perPage
+            ]
         );
     }
 
+    /**
+     * @param $id
+     * @return mappers\MapperInterface|mixed
+     */
     public function getById($id)
     {
-        $result =  $this->getInternalList(
-            'company/id',
-            'Company',
-            [
-                'id' => $id,
-            ]
+        $result =  $this->getSingle(
+            'company/'.$id,
+            'Company'
         );
-        return current($result);
+        return $result;
     }
 }

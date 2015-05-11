@@ -35,8 +35,8 @@ class AbstractDomain
     protected function getSingle($service, $mapper, array $params = array())
     {
         $response = $this->client->send($service, $params);
-        if (isset($response[0])) {
-            return $this->factory->map($response[0], $mapper);
+        if (isset($response)) {
+            return $this->factory->map($response, $mapper);
         }
         return false;
     }
