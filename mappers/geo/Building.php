@@ -14,8 +14,7 @@ use consultnn\api\mappers\Geo;
 class Building extends Geo
 {
     public $id;
-    public $lon;
-    public $lat;
+    public $coordinates;
 
     public $name;
     public $short_name;
