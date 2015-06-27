@@ -15,7 +15,7 @@ class ApiConnection
     private $logger;
 
     /* @var string $url url to API */
-    public $url = 'http://api.directory.max';
+    public $url = 'http://api.directory.docker';
 
     /* @var string $version api version */
     public $version = 'v1';
