@@ -51,9 +51,9 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
     public function testExtraFieldsExists()
     {
         $getTestedCompanies = function(){
-            $restaurant = $this->company->search(null, null, ['rubric_ids' => '55804ecd8f447001008b472f']);
-            $shoppingCenter = $this->company->search(null, null, ['rubric_ids' => '55804ecc8f447001008b4606']);
-            $medicalCenter = $this->company->search(null, null, ['rubric_ids' => '55804ece8f447001008b49ca']);
+            $restaurant = $this->company->search(null, null, ['rubric_ids' => '55804ecd8f447001008b472f'], ['by-type']);
+            $shoppingCenter = $this->company->search(null, null, ['rubric_ids' => '55804ecc8f447001008b4606'], ['by-type']);
+            $medicalCenter = $this->company->search(null, null, ['rubric_ids' => '55804ece8f447001008b49ca'], ['by-type']);
 
             return [
                 5 => current($restaurant),
@@ -106,8 +106,7 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
             return $attributes[$type];
         };
 
-        foreach ($getTestedCompanies() as $type => $company) {
-            $companyMapper = $this->company->getById($company->id, ['by-type']);
+        foreach ($getTestedCompanies() as $type => $companyMapper) {
             $attributes = $mapAttributesByType($type);
 
             $this->assertTrue($hasAttributes($companyMapper, $attributes));

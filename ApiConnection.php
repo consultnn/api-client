@@ -15,7 +15,7 @@ class ApiConnection
     private $logger;
 
     /* @var string $url url to API */
-    public $url = 'http://api.directory.sokrat';
+    public $url = 'http://api.directory.max';
 
     /* @var string $version api version */
     public $version = 'v1';
