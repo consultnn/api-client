@@ -9,7 +9,6 @@ namespace consultnn\api;
  */
 class Company extends AbstractDomain
 {
-
     /**
      * supported filters:
      *  rubrics - list of rubric IDs
