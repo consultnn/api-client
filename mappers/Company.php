@@ -30,6 +30,9 @@ class Company extends AbstractMapper implements \Iterator
     private $_iteratorPositions;
     private $_iteratorCurrent;
 
+    /**
+     * @inheritdoc
+     */
     public function __get($name)
     {
         return isset($this->_extra[$name]) ? $this->_extra[$name] : null;
@@ -52,27 +55,21 @@ class Company extends AbstractMapper implements \Iterator
             }
         }
 
+        asort($this->_extra);
+
         return $this;
     }
 
     /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Return the current element
-     * @link http://php.net/manual/en/iterator.current.php
-     * @return mixed Can return any type.
+     * @inheritdoc
      */
     public function current()
     {
-        $current = $this->_iteratorCurrent;
-
-        return $this->$current;
+        return $this->{$this->_iteratorCurrent};
     }
 
     /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Move forward to next element
-     * @link http://php.net/manual/en/iterator.next.php
-     * @return void Any returned value is ignored.
+     * @inheritdoc
      */
     public function next()
     {
@@ -80,33 +77,27 @@ class Company extends AbstractMapper implements \Iterator
     }
 
     /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Return the key of the current element
-     * @link http://php.net/manual/en/iterator.key.php
-     * @return mixed scalar on success, or null on failure.
+     * @inheritdoc
      */
     public function key()
     {
-        return $this->_iteratorCurrent;
+        $key = $this->_iteratorCurrent;
+
+        $this->_iteratorCurrent = null;
+
+        return $key;
     }
 
     /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Checks if current position is valid
-     * @link http://php.net/manual/en/iterator.valid.php
-     * @return boolean The return value will be casted to boolean and then evaluated.
-     * Returns true on success or false on failure.
+     * @inheritdoc
      */
     public function valid()
     {
-        return !empty($this->_iteratorPositions);
+        return !empty($this->_iteratorPositions) || !empty($this->_iteratorCurrent);
     }
 
     /**
-     * (PHP 5 &gt;= 5.0.0)<br/>
-     * Rewind the Iterator to the first element
-     * @link http://php.net/manual/en/iterator.rewind.php
-     * @return void Any returned value is ignored.
+     * @inheritdoc
      */
     public function rewind()
     {
@@ -122,6 +113,8 @@ class Company extends AbstractMapper implements \Iterator
         if (!empty($this->_extra)) {
             $this->_iteratorPositions = array_unique(array_merge($this->_iteratorPositions, array_keys($this->_extra)));
         }
+
+        var_dump($this->_iteratorPositions);
 
         $this->_iteratorCurrent = array_shift($this->_iteratorPositions);
     }
