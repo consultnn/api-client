@@ -11,20 +11,43 @@ class ExtraFieldsExistsTest extends \PHPUnit_Framework_TestCase
      */
     public $company;
 
+    /**
+     * @inheritdoc
+     */
     public function setUp()
     {
         parent::setUp();
+
         $this->company = new Company();
     }
 
-    public function testIndex()
+    /**
+     * Data provider
+     * @return array
+     */
+    public function provider()
     {
+        self::setUp();
+
+        $provider = [];
         foreach ($this->getTestedCompanies() as $type => $companyMapper) {
 
             $attributes = $this->mapAttributesByType($type);
 
-            $this->assertTrue($this->hasAttributes($companyMapper, $attributes));
+            $provider[] = [$companyMapper, $attributes];
         }
+
+        return $provider;
+    }
+
+    /**
+     * @dataProvider provider
+     * @param Company $mapper
+     * @param string[] $attributes
+     */
+    public function testIndex($mapper, $attributes)
+    {
+        $this->assertTrue($this->hasAttributes($mapper, $attributes));
     }
 
     function getTestedCompanies() {

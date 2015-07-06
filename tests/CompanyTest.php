@@ -8,21 +8,22 @@
 
 namespace consultnn\api\tests;
 
-
 use consultnn\api\Company;
-use consultnn\api\Rubric;
 
 class CompanyTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var Company
      */
-    public $company;
+    private $company;
 
-
+    /**
+     * @inheritdoc
+     */
     public function setUp()
     {
         parent::setUp();
+
         $this->company = new Company();
     }
 
