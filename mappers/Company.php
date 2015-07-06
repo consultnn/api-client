@@ -114,8 +114,6 @@ class Company extends AbstractMapper implements \Iterator
             $this->_iteratorPositions = array_unique(array_merge($this->_iteratorPositions, array_keys($this->_extra)));
         }
 
-        var_dump($this->_iteratorPositions);
-
         $this->_iteratorCurrent = array_shift($this->_iteratorPositions);
     }
 }
