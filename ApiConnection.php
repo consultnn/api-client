@@ -15,7 +15,7 @@ class ApiConnection
     private $logger;
 
     /* @var string $url url to API */
-    public $url = 'http://api.consultnn.ru/';
+    public $url = 'http://api.consultnn.ru';
 
     /* @var string $version api version */
     public $version = 'v1';
