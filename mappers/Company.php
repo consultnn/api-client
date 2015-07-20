@@ -30,6 +30,11 @@ class Company extends AbstractMapper implements \Iterator
     private $_iteratorPositions;
     private $_iteratorCurrent;
 
+    public function __isset($name)
+    {
+        return isset($this->_extra[$name]);
+    }
+
     /**
      * @inheritdoc
      */
