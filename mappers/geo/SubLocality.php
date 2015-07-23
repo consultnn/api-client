@@ -1,6 +1,8 @@
 <?php
 
-namespace consultnn\api\mappers;
+namespace consultnn\api\mappers\geo;
+
+use consultnn\api\mappers\Geo;
 
 /**
  *
