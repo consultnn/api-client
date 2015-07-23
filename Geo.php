@@ -4,7 +4,8 @@ namespace consultnn\api;
 
 class Geo extends AbstractDomain
 {
-    const TYPE_HOUSE = 'house';
+    const TYPE_HOUSE        = 'house';
+    const TYPE_SUB_LOCALITY = 'sublocality';
 
     public function get($id)
     {

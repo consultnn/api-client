@@ -14,8 +14,10 @@ class Geo extends AbstractMapper
             throw new Exception("Can't resolve mapper because of property 'source' not found in data");
         }
         switch ($data['source']) {
-            case 'house':
+            case \consultnn\api\Geo::TYPE_HOUSE:
                 return 'geo\Building';
+            case \consultnn\api\Geo::TYPE_SUB_LOCALITY:
+                return 'geo\SubLocality';
             default:
                 return 'Geo';
         }
