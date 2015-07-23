@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: sokrat
- * Date: 14.04.15
- * Time: 18:43
- */
 
 namespace consultnn\api\mappers\geo;
 
@@ -28,6 +22,12 @@ class Building extends Geo
     public $house;
     public $altStreet;
     public $altHouse;
+    public $streetName;
+
+    public function setStreetname($value)
+    {
+        $this->streetName = $value;
+    }
 
     public function setVillageName($value)
     {
@@ -57,7 +57,11 @@ class Building extends Geo
 
     public function setAddress($value)
     {
-        $this->name = $value;
+        $address = $value;
+        if (empty($this->streetName)) {
+            $address = $this->village.', '.$value;
+        }
+        $this->name = $address;
     }
 
     public function setHouse($value)
