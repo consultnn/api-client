@@ -58,9 +58,10 @@ class Building extends Geo
     public function setAddress($value)
     {
         $address = $value;
-        if (empty($this->streetName)) {
+        if (empty($this->streetName) && !empty($this->village)) {
             $address = $this->village.', '.$value;
         }
+
         $this->name = $address;
     }
 
