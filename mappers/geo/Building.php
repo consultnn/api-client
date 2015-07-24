@@ -12,7 +12,7 @@ class Building extends Geo
     public $lat;
 
     public $name;
-    public $short_name;
+    public $shortName;
 
     public $district;
     public $locality;
@@ -22,43 +22,11 @@ class Building extends Geo
     public $house;
     public $altStreet;
     public $altHouse;
-    public $streetName;
-
-    public function setStreetname($value)
-    {
-        $this->streetName = $value;
-    }
-
-    public function setVillageName($value)
-    {
-        $this->village = $value;
-    }
-
-    public function setSubLocalityName($value)
-    {
-        $this->subLocality = $value;
-    }
-
-    public function setLocalityName($value)
-    {
-        $this->locality = $value;
-    }
-
-    public function setDistrictName($value)
-    {
-        $this->district = $value;
-    }
-
-
-    public function setAltStreetName($name)
-    {
-        $this->altStreet = $name;
-    }
 
     public function setAddress($value)
     {
         $address = $value;
-        if (empty($this->streetName)) {
+        if (empty($this->street)) {
             $address = $this->village.', '.$value;
         }
         $this->name = $address;
@@ -66,6 +34,6 @@ class Building extends Geo
 
     public function setHouse($value)
     {
-        $this->short_name = $this->house = $value;
+        $this->shortName = $this->house = $value;
     }
 }

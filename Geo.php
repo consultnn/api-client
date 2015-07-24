@@ -4,13 +4,13 @@ namespace consultnn\api;
 
 class Geo extends AbstractDomain
 {
-    const TYPE_HOUSE        = 'house';
-    const TYPE_SUB_LOCALITY = 'sublocality';
+    const TYPE_HOUSE        = 'House';
+    const TYPE_SUB_LOCALITY = 'SubLocality';
 
     public function get($id)
     {
         $result =  $this->getSingle(
-            'address/id',
+            'address2/id',
             [__NAMESPACE__.'\mappers\Geo', 'geoMapResolver'],
             [
                 'id' => $id,
@@ -26,17 +26,19 @@ class Geo extends AbstractDomain
      * @return mappers\MapperInterface[]
      * @throws exceptions\Exception
      */
-    public function search($query, $types = [])
+    public function search($query, array $types = [], array $filters = [])
     {
         $result =  $this->getInternalList(
-            'dict/address',
+            'dict2/address',
             [__NAMESPACE__.'\mappers\Geo', 'geoMapResolver'],
             [
                 'name' => $query,
                 'format' => 'json',
-                'dictionaries' => $types
+                'dictionaries' => $types,
+                'filters' => $filters
             ]
         );
+
         return $result;
     }
 }
