@@ -84,11 +84,4 @@ abstract class AbstractMapper implements MapperInterface, \Serializable
         }
         return $str;
     }
-
-//    protected function setAddress($value)
-//    {
-//        if ($value !== null) {
-//            $this->address = $this->factory->map($value, 'Address');
-//        }
-//    }
 }
