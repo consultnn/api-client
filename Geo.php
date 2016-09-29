@@ -6,6 +6,8 @@ class Geo extends AbstractDomain
 {
     const TYPE_HOUSE        = 'House';
     const TYPE_SUB_LOCALITY = 'SubLocality';
+    const TYPE_VILLAGE      = 'Village';
+    const TYPE_STREET       = 'Street';
 
     public function get($id)
     {
