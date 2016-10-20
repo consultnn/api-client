@@ -162,7 +162,6 @@ class ApiConnection
                 CURLOPT_FOLLOWLOCATION => false,
                 CURLOPT_USERAGENT => 'PHP ' . __CLASS__,
                 CURLOPT_ENCODING => 'gzip, deflate',
-                CURLOPT_DNS_USE_GLOBAL_CACHE => true
             ));
         }
         return $this->curl;
